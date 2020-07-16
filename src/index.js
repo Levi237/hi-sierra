@@ -16,7 +16,7 @@ import 'firebase/firebase-storage'
     databaseURL: "https://hi-sierra.firebaseio.com",
     projectId: "hi-sierra",
     storageBucket: "hi-sierra.appspot.com",
-    messagingSenderId: "924601017843",
+    messagingSenderId: "392451799228",
     appId: `${process.env.REACT_APP_FIREBASE_APP_ID}`,
     measurementId: `${process.env.REACT_APP_FIREBASE_MEASUREMENT_ID}`
   });
