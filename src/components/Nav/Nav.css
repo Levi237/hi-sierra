@@ -1,0 +1,48 @@
+.navBtn {
+    text-decoration: none;  
+    background-color: none;
+    color: #FFF;
+    padding: 20px .5rem;
+    margin: 0 0;
+    font-size: .8rem;
+    text-shadow: 1px 1px #000;
+}
+
+.navBtn:hover {
+    transition: all .3s;
+    background-image: linear-gradient(to right, rgb(211, 211, 211, .3), rgb(211, 211, 211, .1), rgb(211, 211, 211, .1), rgb(211, 211, 211, .1),  rgb(211, 211, 211, .3));
+    border-right: 2px solid rgb(211, 211, 211, .4);
+    border-left: 2px solid rgb(211, 211, 211, .4);
+    margin: 0 -2px;
+
+}
+
+.underline {
+    text-decoration: underline !important;
+}
+
+.navAlert {
+    text-align: center;
+    z-index: 900
+}
+
+.neuter:hover {
+    background-color: gray;
+    color: darkgray;
+}
+
+@media screen and (max-width: 960px) {
+    .navBtn {
+        padding: 8px 1rem;
+        font-size: .9rem;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .navBtn {
+        font-size: .8rem;
+    }
+    .navBox {
+        text-align: center;
+    }
+}

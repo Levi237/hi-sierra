@@ -1,13 +1,576 @@
+html {
+  height: 100vh center;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100vh;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+*:focus {
+  outline: 0;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+
+h2 {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 1.6rem;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+
+h3 {
+  position: relative;
+  z-index: 50;
+  font-size: 1.17rem;
+  margin-block-start: .8em;
+  margin-block-end: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+input {
+  width: 9em;
+  height: 1rem;
+}
+/*************************** HELP MODAL ***************************/
+.helpModal {
+  z-index: 9000 !important;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+.helpModal > div {
+  position: relative;
+  margin: 40px auto;
+  width: 400px;
+  /* height: 500px; */
+  background-color: white;
+  color: black;
+  padding: 5vw 5vw;
+  box-shadow: 15px 15px 40px 15px black;
+
+}
+
+/*************************** SELECT TOGGLE ***************************/
+.selected {
+  display: none !important;
+}
+
+
+/*************************** EDIT ***************************/
+.edit {
+  margin: auto 0;
+  text-align: center;
+}
+.edit > form > button {
+      color: #FFF;
+      border: 1px #FFF solid;
+      border-radius: 5px;
+      font-size: .5em;
+      padding: .25em 1em;
+      transition: all .1s ease-in-out;
+      background-color: rgb(57, 93, 41, 1);
+      margin-bottom: .1em;
+}
+.edit > form > button:hover {
+      transition-delay: .1s;
+      background-color: rgba(33, 56, 23, 1);
+}
+
+/*************************** ALERT ***************************/
+.alertSign {
+  height: 1rem;
+  margin-right: -3px;
+  transition: all .4s;
+}
+.alertSign:hover {
+  transform: scale(1.4);
+  transition: all .4s;
+}
+
+/*************************** LOADING ***************************/
+.loading {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+.pacman {
+  float: right;
+  width: 40px;
+}
+
+
+/****************************************************************************/
+/***********************                              ***********************/
+/***********************         Media Query          ***********************/
+/***********************           DESKTOP            ***********************/
+/***********************                              ***********************/
+/****************************************************************************/
+.grid-container {
+  width: 100%;
+  height: auto;
+  display: grid;
+  position: relative;
+  grid-template-columns: 10vw 40vw 40vw 10vw;
+  grid-template-rows: 55px 200px 0px 55px minmax(36vw, auto) 5rem;
+grid-template-areas:
+  ' ha header header hb '
+  ' image image image image'
+  ' ta title title tb '
+  ' na navPark navBar nb '
+  ' . menu main . '
+  ' fa footer footer fb ';
+   grid-gap: 0;
+}
+.grid-header, .grid-navBar, .grid-navPark , .grid-footer, .grid-ha, .grid-hb, .grid-na, .grid-nb, .grid-fa, .grid-fb { background: #000; color: #FFF;}
+.grid-title, .grid-ta, .grid-tb {
+  background: rgb(0, 0, 0, .6); 
+  color: #FFF; 
+  width: 100%;
+  margin-top: -82px;
+}
+.grid-ha { grid-area: ha; }
+.grid-hb { grid-area: hb; }
+.grid-na { grid-area: na; }
+.grid-nb { grid-area: nb; }
+.grid-fa { grid-area: fa; }
+.grid-fb { grid-area: fb; }   
+.grid-ta { grid-area: ta; }
+.grid-tb { grid-area: tb; }
+
+/***********************         GRID-HEADER          ***********************/
+.grid-header { 
+  grid-area: header; 
+  position: relative;
+  z-index: 500;
+}
+.grid-header > h1 {
+  font-size: 2.5rem;
+  margin-block-end: 0em;
+}
+.grid-header > h3 > img {
+  height: 1em;
+  z-index: 50;
+  position: relative;
+  margin-right: -.15em;
+}
+
+.grid-hb > input {
+  height: 30px;
+  width: 30px;
+  border-radius: 100px;
+  border: 2px solid white;
+  font-size: 1rem;
+  font-weight: 800;
+  background-color: transparent;
+  color: white;
+  float: right;
+  margin: 10px 15px;
+  padding: 0;
+  transition: all .3s ease-in-out;
+}
+.grid-hb > input:hover{
+  transition: all .3s ease-in-out;
+  box-shadow: inset 0 0 4px 2px white;
+  transform: scale(1.1)
+}
+.grid-hb > input:active{
+  transform: translateY(2px);
+}
+
+/***********************         GRID-IMAGE          ***********************/
+.grid-image { 
+  grid-area: image; 
+  background-color: transparent;
+  width: auto;
+}
+.grid-image > div  {
+  height: 200px;
+}
+.grid-image > div > img {
+  max-height: 200px;
+  height: 100%;
+  width: 100%;
+  z-index: -10;
+  position: relative;
+}
+
+/***********************         GRID-TITLE          ***********************/
+.grid-title { 
+  grid-area: title;
+}
+.grid-title > section > form {
+  margin: 1em 0;
+}
+.grid-title > div > h1 {
+  position: absolute;
+  display: block;
+  font-size: 2.5em;
+  margin-block-start: 1rem;
+  margin-block-end: 0.2em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+
+/***********************         GRID-NAVPARK          ***********************/
+.grid-navPark { 
+  grid-area: navPark; 
+  text-align: right;
+  position: relative;
+  padding: 19px 0 ;
+  font-weight: bold;
+}
+
+.parkMenu {
+  text-align: left;
+  z-index: 500;
+}
+.parkMenu > form > select {
+  text-align: left;
+  z-index: 500;
+  max-width: 35vw;
+  font-size: 1rem;
+  color: white;
+  background: transparent;
+}
+
+/***********************         GRID-NAVBAR          ***********************/
+.grid-navBar { 
+  grid-area: navBar; 
+  text-align: right;
+  position: relative;
+  padding: 18px 0 ;
+  font-weight: bold;
+}
+
+/***********************         GRID-MENU          ***********************/
+.grid-menu { 
+  grid-area: menu; 
+  background: #FFF;
+  padding: 2.5vw 1vw 0 0;
+  
+  background-color: transparent;
+}
+.grid-menu > h1 {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 2rem;
+  padding: 0;
+}
+
+.grid-menu > p {
+  text-align: justify;
+}
+
+/***********************         GRID-MAIN          ***********************/
+.grid-main { 
+  grid-area: main; 
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 1rem;
+  background: transparent;
+  min-height: 100vh;
+  padding: 2.5vw 0 0 1vw;
+  overflow: hidden;
+}
+.grid-main > section {
+  text-align: center;
+  font-size: .8rem;
+}
+.grid-main > img {
+  width: 40vw;
+}
+@media (max-width: 960px){
+  .grid-main, .grid-menu { 
+    padding: 2.5vw 1vw;
+  }
+}
+
+/***********************         GRID-FOOTER          ***********************/
+.grid-footer {
+  grid-area: footer;
+  position: sticky;
+  text-align: center;
+}
+.grid-footer > h3 {
+  font-size: 1.1vw;
+    margin-block-start: 2rem;
+    margin-block-end: 0;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+    transition: all .3s ease-in-out;
+}
+.grid-footer > h3 > a {
+  transition: all .3s ease-in-out;
+  text-decoration: none;
+  color: #FFF;
+}
+.grid-footer > h3 > a:hover {
+  font-size: 1rem;
+  transition: all .3s ease-in-out;
+  text-decoration: underline;
+}
+
+
+
+/****************************************************************************/
+/***********************                              ***********************/
+/***********************         Media Query          ***********************/
+/***********************           max 960            ***********************/
+/***********************                              ***********************/
+/****************************************************************************/
+@media screen and (max-width: 960px) {
+
+  html {
+    font-size: .8rem;
+  }
+
+  .grid-container {
+    width: 100%;
+    display: grid;
+    position: relative;
+    grid-template-columns: 5vw 90vw 5vw;
+    grid-template-rows: 40px 100px 0px 29px auto 40vw 5rem;
+  grid-template-areas:
+    ' header navPark hb'
+    ' image image image '
+    ' title title title '
+    ' navBar navBar navBar '
+    ' . menu . '
+    ' . main . '
+    ' footer footer footer ';
+    grid-gap: 0;
+  }
+  .grid-ha, .grid-na, .grid-nb, .grid-ta, .grid-tb, .grid-fa, .grid-fb { display: none}
+
+  /***********************         GRID-HEADER 960          ***********************/
+  .grid-title, .grid-header { 
+    padding-left: 1rem;
+  }
+  .grid-header > h3 {
+    width: 15rem;
+  }
+  .grid-hb > input {
+    height: 3vw;
+    width: 3vw;
+    font-size: 1.5vw;
+    margin: .6rem 1vw;
+}
+  /***********************         GRID-NAVPARK 960          ***********************/
+  .grid-navPark { 
+    float: right;
+    position: relative;
+    padding: 19px 1rem ;
+  }
+
+  /***********************         GRID-NAVBAR 960          ***********************/
+  .grid-navBar {
+    padding: 7px 0;
+  }
+
+  /***********************         GRID-IMAGE 960          ***********************/
+  .grid-image > div > img {
+    max-height: 100px;
+    width: 100%;
+    z-index: -10;
+    position: relative;
+  }
+
+  /***********************         GRID-TITLE 960          ***********************/
+  .grid-title {
+    width: auto;
+    padding: 0 1rem;
+    height: 40px;
+    margin-top: -40px;
+  }
+  .grid-title > div > h1 {
+    font-size: 1.6rem;
+    margin-block-start: 0.4em;
+  }
+
+  /***********************         GRID-MENU 960          ***********************/
+  .grid-menu {
+    padding: 2vw 0 0 0;
+    margin: 0;
+    overflow: auto;
+  }
+
+  .parkMenu {
+    float: right;
+    margin: -8px 0 0 -50vw;
+  }
+
+  /***********************         GRID-MAIN 960          ***********************/
+  .grid-main { 
+    padding: 0 0 1rem 0;
+    width: 90vw;
+    min-height: auto;
+  }
+  .grid-main > img {
+    width: 90vw;
+    height: 300px;
+  }
+  .grid-image > div  {
+    height: 100px;
+  }
+
+  .aboutFullPic {
+    height: 60vw;
+    position: absolute;
+    margin-top: 169px;
+  }
+
+  .aboutInfoCenter {
+    width: 70vw;
+    margin-left: 5vw;
+    margin-right: 5vw;
+  }
+  .aboutInfoCenter > section {
+    font-size: 1.4vw;
+  }
+  .parkMenu > form > select {
+    max-width: 50vw;
+    width: 50vw;
+    margin-top: 2px;
+  }
+
+  /***********************         GRID-FOOTER 960          ***********************/
+  .grid-footer {
+    padding: 0 5vw;
+  }
+
+  /***********************         HELP MODAL 960          ***********************/
+  .helpModal > div {
+  width: 60vw;
+  }
+}
+
+
+
+/****************************************************************************/
+/***********************                              ***********************/
+/***********************         Media Query          ***********************/
+/***********************           max 500            ***********************/
+/***********************                              ***********************/
+/****************************************************************************/
+@media screen and (max-width: 500px) {
+
+  html {
+    font-size: .7rem;
+  }
+
+  .grid-container {
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    position: relative;
+    grid-template-columns: 5vw 5vw 80vw 5vw 5vw;
+    grid-template-rows: 34px 30px 100px 0px 29px minmax(max-content, 140vw) 72vw 2rem;
+  grid-template-areas:
+    ' header header header hb hb '
+    ' navPark navPark navPark navPark navPark'
+    ' image image image image image '
+    ' title title title title title '
+    ' navBar navBar navBar navBar navBar '
+    ' . menu menu menu . '
+    ' . main main main . '
+    ' footer footer footer footer footer ';
+    grid-gap: 0;
+  }
+
+  /***********************         GRID-HEADER 500          ***********************/
+  .grid-header > h3 {
+    font-size: 1.6rem;
+    width: 90vw;
+    text-align: center;
+    margin-block-start: .4em;
+  }
+  .grid-hb > input {
+    height: 5vw;
+    width: 5vw;
+    font-size: 2vw;
+    margin: .6rem 1vw;
+  }
+  /***********************         GRID-NAVPARK GRID-NAVBAR 500          ***********************/
+  .grid-navPark { 
+    float: right;
+    position: relative;
+    padding: 0 ;
+  }
+  .grid-navBar {
+    padding: 7px 0;
+  }
+      
+  /***********************         GRID-IMAGE 500          ***********************/
+  /***********************         GRID-TITLE 500          ***********************/
+  .grid-title {
+    overflow: hidden;
+  }
+  .grid-title > div > h1 {
+    font-size: 2rem;
+    text-align: center;
+    margin-block-start: 0.3em;
+  }
+
+  /***********************         GRID-MAIN 500          ***********************/
+  .grid-main > img {
+    width: 90vw;
+    margin-top: -38vw;
+    height: 66vw;
+  }
+  /***********************         GRID-MENU 500          ***********************/
+  .grid-menu { 
+
+    /* overflow: auto; */
+    /* max-height: 100vw; */
+  }
+
+  .parkMenu {
+    float: right;
+    margin: 0;
+  }
+  .parkMenu > form > select {
+    max-width: 90vw;
+    width: 90vw;
+    margin: 5px 5vw;
+  }
+
+  .aboutInfoCenter {
+    font-size: 2.2vw;
+  }  
+  .aboutInfoCenter > h1 {
+        font-size: 4.2vw;
+  }
+  .aboutInfoCenter > section > span {
+    font-size: 2.5vw;
+  }
+
+  .aboutFullPic {
+    height: 125vw;
+    margin-top: 190px;
+  }
+
+  /***********************         GRID-FOOTER 500          ***********************/
+  .grid-footer {
+    margin-top: -20px;
+  }
+  .grid-footer > h3 > a {
+    font-size: 8px;
+  }
+  /***********************         HELP MODAL 500          ***********************/
+  .helpModal > div {
+    width: 80vw;
+  }
+    
 }

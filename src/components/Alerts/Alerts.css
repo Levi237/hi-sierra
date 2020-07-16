@@ -1,0 +1,118 @@
+.myListContainer {
+  font-size: 1em;
+  height: auto;
+  padding: 1em;
+  background-color: #FFF;
+}
+
+.title .details {
+  transition-duration: 5s;
+  display: none;
+
+}
+.title {
+  transition: all .1s ease-in-out;
+}
+.title:hover {
+  text-decoration: none;
+  cursor: pointer;
+  background-color: rgb(0, 0, 0, .2);
+  border-radius: 5px;
+  padding: 5px;
+  margin: -5px;
+}
+.active .details {
+  transition-duration: 5s;
+  display: inline-block;
+  width: 100%;
+}
+.details {
+  padding-top: .6em;
+  text-decoration: none;
+  font-size: .8em;
+}
+
+.alertOpen, .currentlyClosed {
+  color: #fff;
+  border-radius: 5px 5px 0 0;
+  padding: 5px;
+}
+.alertOpen {
+    background-color: #395d29;
+    margin: -5px -5px -28px -5px;
+    position: relative;
+}
+.currentlyClosed {
+  background-color: #99110d;
+  margin: -5px -5px 0 -5px;
+}
+
+.alertList {
+    padding: .5em 1em ;
+}
+
+.addBox {
+  position: relative;
+  z-index: 500;
+  text-align: right;
+}
+
+.alertsButton {
+  position: relative;
+  color: #fff;
+  border: 1px #fff solid;
+  border-radius: 5px;
+  padding: .5em 1em;
+  transition: all .1s ease-in-out;
+  background-color: rgb(57, 93, 41, 1);
+  margin-bottom: .1em;
+}
+.alertsButton:hover {
+  transition-delay: .1s;
+  transform: scale(1.1);
+}
+
+.deleteBox {
+  text-align: right;
+}
+
+.deleteBtn {
+  font-size: .5em;
+  color: #000;
+  padding: .5em 1em;
+  margin: .5em;
+  background-color: rgb(0, 0, 0, .1);
+  border: 1px #000 solid;
+  border-radius: 5px;
+  position: relative;
+  z-index: 300 !important;
+  transition: all .1s ease-in-out;
+}
+.deleteBtn:hover {
+  background-color: rgb(113, 17, 13, 1);
+  border: 1px #FFF solid;
+  border-color: black;
+  color: #fff;
+}
+
+.npsLink {
+    transition-delay: .1s;
+    color: rgb(11, 91, 151);
+    border-bottom: 2px dotted rgb(136, 167, 189);
+    font-size: .9em;
+}
+.npsLink:hover {
+  border-bottom: 2px dotted rgb(11, 91, 151);
+}
+
+.mn-dwn-arw {
+  border-color: #777 transparent;
+  border-style: solid;
+  bottom: 0;
+  border-width: 8px 5px 0 4px;
+}
+
+.weatherTitle {
+  padding: 0 0 0 220px;
+  margin-top: -4px;
+}
