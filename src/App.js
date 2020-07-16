@@ -1,26 +1,26 @@
-import React, {Component } from 'react';
-import { Switch, Route, withRouter } from 'react-router-dom';
+import React, {Component }            from 'react';
+import { Switch, Route, withRouter }  from 'react-router-dom';
+import * as routes                    from './constants/routes';
 
 import './App.css';
 
-import Alerts from './components/Alerts/Alerts';
+import Alerts   from './components/Alerts/Alerts';
 // import EditUser from './components/User/EditUser'
-import Help from './components/Modal/Help';
-import Info from './components/Content/Info';
-import Intro from './components/Content/Intro';
+import Help     from './components/Modal/Help';
+import Info     from './components/Content/Info';
+import Intro    from './components/Content/Intro';
 // import Login from './components/User/Login';
-import Map from './components/Map/Map';
-import Modal from './components/Modal/Modal';
-import Nav from './components/Nav/Nav';
-import ParkNav from './components/Parks/Nav';
+import Map      from './components/Map/Map';
+import Modal    from './components/Modal/Modal';
+import Nav      from './components/Nav/Nav';
+import ParkNav  from './components/Parks/Nav';
 import ParkShow from './components/Parks/ParkShow';
 // import Register from './components/User/Register';
 // import UserList from './components/User/UserList';
 // import UserModal from './components/Modal/User';
-import Vsky from './components/Vsky/Vsky';
+import Vsky     from './components/Vsky/Vsky';
 // export default class App extends Component {
-  import * as routes from './constants/routes';
-  class App extends Component {
+class App extends Component {
   state = {
     // currentUser: null,
     // closures: [],
