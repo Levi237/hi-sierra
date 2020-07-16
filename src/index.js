@@ -28,6 +28,7 @@ import 'firebase/firebase-storage'
     <Router>
         <App />
     </Router>, 
-    document.getElementById('root'));
+    document.getElementById('root')
+  );
 
 serviceWorker.unregister();
