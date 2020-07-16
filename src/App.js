@@ -120,7 +120,7 @@ import Vsky from './components/Vsky/Vsky';
   }
   getMap = async () => {
     try {
-      const map = await fetch("https://maps.googleapis.com/maps/api/js?key="+`${process.env.GOOGLE_API_KEY}`)
+      const map = await fetch("https://maps.googleapis.com/maps/api/js?key="+`${process.env.API_KEY}`)
       const mapJson = await map.json();
       return mapJson
     } catch (err) {

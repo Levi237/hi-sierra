@@ -5,14 +5,29 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter as Router } from 'react-router-dom';
 
-ReactDOM.render(
-  <Router>
-    <App />
-  </Router>,
-  document.getElementById('root')
-);
+import * as firebase from "firebase/app";
+import 'firebase/firestore';
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
+import 'firebase/firebase-storage'
+
+  firebase.initializeApp({
+    apiKey: `${process.env.REACT_APP_FIREBASE_API_KEY}`,
+    authDomain: "hi-sierra.firebaseapp.com",
+    databaseURL: "https://hi-sierra.firebaseio.com",
+    projectId: "hi-sierra",
+    storageBucket: "hi-sierra.appspot.com",
+    messagingSenderId: "924601017843",
+    appId: `${process.env.REACT_APP_FIREBASE_APP_ID}`,
+    measurementId: `${process.env.REACT_APP_FIREBASE_MEASUREMENT_ID}`
+  });
+  const storage = firebase.storage();
+  export { storage, firebase as default }
+
+
+  ReactDOM.render(
+    <Router>
+        <App />
+    </Router>, 
+    document.getElementById('root'));
+
 serviceWorker.unregister();
