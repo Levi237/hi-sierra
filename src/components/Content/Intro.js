@@ -4,6 +4,7 @@ const Intro = () =>
     <>
         <h1>Mission Statement</h1>
             <p>The purpose of this website is to provide information to park enthusiasts that is not readily available on the already exisiting nps.gov website.  
+            </p>
                 <ul>
                     <li>
                         The drop down menu allows users to select a specific national park near or along the high Sierras for which they can get more detailed information.
@@ -15,7 +16,7 @@ const Intro = () =>
                     Check the Alerts page to see which parks on the west coast are closed, make a list and find out when your park reopens.
                     </li>
                 </ul>
-            </p>
+
         <br />
         <h1>My Story</h1>
             <p>
