@@ -120,7 +120,7 @@ class App extends Component {
   }
   getMap = async () => {
     try {
-      const map = await fetch("https://maps.googleapis.com/maps/api/js?key="+`${process.env.API_KEY}`)
+      const map = await fetch("https://maps.googleapis.com/maps/api/js?key=AIzaSyAqFICPjBFuor7cGj-a5mwiZgkmLdv2j90")
       const mapJson = await map.json();
       return mapJson
     } catch (err) {
