@@ -15,7 +15,7 @@ export default class Map extends Component {
             <>
             <div className="map">
                  <GoogleMapReact 
-                    bootstrapURLKeys={{ key: "AIzaSyBHLett8djBo62dDXj0EjCimF8Rd6E8cxg"}}
+                    bootstrapURLKeys={{ key: "AIzaSyAqFICPjBFuor7cGj-a5mwiZgkmLdv2j90"}}
                     defaultCenter={{
                         //Yosemite coordinates
                         lat: 37.8651,  
