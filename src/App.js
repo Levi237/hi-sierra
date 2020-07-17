@@ -1,6 +1,8 @@
-import React, {Component }            from 'react';
+import React, { Component }            from 'react';
 import { Switch, Route, withRouter }  from 'react-router-dom';
 import * as routes                    from './constants/routes';
+
+// import { Map, GoogleApiWrapper } from 'google-maps-react';
 
 import './App.css';
 
@@ -118,15 +120,15 @@ class App extends Component {
       user: !this.state.user
     })
   }
-  getMap = async () => {
-    try {
-      const map = await fetch("https://maps.googleapis.com/maps/api/js?key=AIzaSyAqFICPjBFuor7cGj-a5mwiZgkmLdv2j90")
-      const mapJson = await map.json();
-      return mapJson
-    } catch (err) {
-      return err
-    }
-  }
+  // getMap = async () => {
+  //   try {
+  //     const map = await fetch("https://maps.googleapis.com/maps/api/js?key=")
+  //     const mapJson = await map.json();
+  //     return mapJson
+  //   } catch (err) {
+  //     return err
+  //   }
+  // }
   
   render(){
     const { closureList, currentUser, loading, lat, lng, parks, park, show, help } = this.state
@@ -243,7 +245,16 @@ class App extends Component {
           <Switch>     
             { !show &&
             <Route exact path={routes.STAR} render={() =>
-              <div className="vskyWindow"><Vsky show={show} lat={lat} lng={lng} park={park} parks={parks}/><br/>             <Map closureList={closureList} lat={lat} lng={lng}/></div> }/>
+              <div className="vskyWindow"><Vsky show={show} lat={lat} lng={lng} park={park} parks={parks}/><br/>             
+              <Map closureList={closureList} lat={lat} lng={lng}/>
+              {/* <Map
+                google={this.props.google}
+                zoom={8}
+                // style={mapStyles}
+                initialCenter={{ lat: 47.444, lng: -122.176}}
+              /> */}
+              </div> 
+              }/>
             }
 
             {/* <Route exact path={routes.ALERTS} render={() =>
