@@ -130,6 +130,9 @@ class App extends Component {
   //   }
   // }
   
+  toggle = e => {
+    e.currentTarget.classList.toggle('active');
+  }
   render(){
     const { closureList, currentUser, loading, lat, lng, parks, park, show, help } = this.state
 
@@ -161,10 +164,10 @@ class App extends Component {
               {/* <Route exact path={routes.HOME} render={() =>
                 <img src="goblin-valley.png" alt="goblin valley" title="with Auntie Toy"/> }/> */}
            
-              <Route exact path={routes.STAR} render={() =>
+              <Route exact path={routes.PARKS} render={() =>
                 <img src="header-yosemite.png" alt="yosemite" title="5 days Aug 2018"/> }/>
-              {/* <Route exact path={routes.ALERTS} render={() =>
-                <img src="great-saltlake.png" alt="capital reef" title="Capital Reef, Utah"/> }/>           */}
+              <Route exact path={routes.ALERTS} render={() =>
+                <img src="great-saltlake.png" alt="capital reef" title="Capital Reef, Utah"/> }/>          
               <Route path={routes.ROOT}><img src="joshua-tree.png" /></Route>
             </Switch>
           </div>
@@ -175,14 +178,18 @@ class App extends Component {
         <div className="grid-title">
           { loading && <div className="loading">Please allow time for data to load.  Compliments of nps.gov</div> }          
           <Switch>    
+          <Route exact path={routes.PARKS} render={() =>
+              park.name ? <div><h1>{park.name}</h1></div> : <div><h1>National Parks</h1></div> }/>
             {/* <Route exact path={routes.STAR} render={() =>
               park.name ? <div><h1>{park.name}</h1></div> : <div><h1>National Parks</h1></div> }/>    */}
-            <Route exact path={routes.STAR} render={() =>
+            <Route exact path={routes.ALERTS} render={() =>
               !currentUser ? <div><h1>Closure Alerts</h1></div> : <div><h1>{currentUser.username}'s Park Alerts</h1></div> }/>            
             <Route exact path={routes.ROOT} render={() =>
               <div className="navAlert"></div> }/>
-            {/* <Route exact path={routes.HOME} render={() =>
-              currentUser ? <div className="navAlert"><h1>Home</h1></div> : <div className="navAlert"><h1>Welcome</h1></div> }/> */}
+            {/* <Route exact path={routes.ABOUT} render={() =>
+              <div className="navAlert"><h1>About Me</h1></div> }/> */}
+            <Route exact path={routes.HOME} render={() =>
+              currentUser ? <div className="navAlert"><h1>Home</h1></div> : <div className="navAlert"><h1>Welcome</h1></div> }/>
             {/* <Route component={My404}/> */}
           </Switch>
         </div>
@@ -192,7 +199,7 @@ class App extends Component {
         <div className="grid-na"/>
         <div className="grid-navPark">
           <Switch>
-            {/* <Route exact path={routes.ALERTS} render={() => <></> }/> */}
+            <Route exact path={routes.ALERTS} render={() => <></> }/>
             <Route path={routes.ROOT} render={() => 
               <ParkNav parks={parks} park={park} handleSkyMap={this.handleSkyMap} changeShowPark={this.changeShowPark}/> }/>
           </Switch>
@@ -205,7 +212,7 @@ class App extends Component {
 {/* MENU */}
         <div className="grid-menu">            
         <Switch>
-            <Route exact path={routes.STAR} render={() =>
+            <Route exact path={routes.PARKS} render={() =>
               <>
               { loading
               ? <div className="pacman">Sorry for the delay</div>
@@ -213,12 +220,12 @@ class App extends Component {
               }
               <ParkShow park={park} closureList={closureList} handleSkyMap={this.handleSkyMap}/>                                
               </> }/>
-            {/* <Route exact path={routes.HOME} render={() =>
-             <><Intro /></>}/> */}
+            <Route exact path={routes.HOME} render={() =>
+             <><Intro /></>}/>
             {/* <Route exact path={routes.TRACK} render={() =>
               currentUser && <UserList deleteItem={this.deleteItem} currentUser={currentUser} edituser={this.edituser} handleSetMap={this.handleSetMap} closureList={closureList}/> }/> */}
-            {/* <Route exact path={routes.ALERTS} render={() =>
-              <>    */}
+            <Route exact path={routes.ALERTS} render={() =>
+              <>   
               {/* { currentUser
               ? <><input className="vskyModalBtn" type="button" onClick={this.userModal} value="User Edit" /><br /><br /></>
               : <><input className="vskyModalBtn" type="button" onClick={this.userModal} value="Log/Register" /><br /><br /></>
@@ -233,8 +240,8 @@ class App extends Component {
                 </>
               }
               </UserModal> */}
-              {/* <Alerts currentUser={currentUser} doSetCurrentUser={this.doSetCurrentUser} closureList={closureList} handleSetMap={this.handleSetMap}/>
-              </> }/> */}
+              <Alerts currentUser={currentUser} doSetCurrentUser={this.doSetCurrentUser} closureList={closureList} handleSetMap={this.handleSetMap}/>
+              </> }/>
             <Route path={routes.ROOT} render={() =>
               <Intro /> }/>   
           </Switch>
@@ -244,26 +251,30 @@ class App extends Component {
         <div className="grid-main">
           <Switch>     
             { !show &&
-            <Route exact path={routes.STAR} render={() =>
-              <div className="vskyWindow"><Vsky show={show} lat={lat} lng={lng} park={park} parks={parks}/><br/>             
-              <Map closureList={closureList} lat={lat} lng={lng}/>
-              {/* <Map
-                google={this.props.google}
-                zoom={8}
-                // style={mapStyles}
-                initialCenter={{ lat: 47.444, lng: -122.176}}
-              /> */}
+            <Route exact path={routes.PARKS} render={() =>
+                <div className="title" onClick={this.toggle} >
+                Click to swap
+              <div className="vskyWindow">
+                <Vsky show={show} lat={lat} lng={lng} park={park} parks={parks}/>
+                {/* <br/>              */}
+                  <Map closureList={closureList} lat={lat} lng={lng} />
+                {/* <Map
+                  google={this.props.google}
+                  zoom={8}
+                  // style={mapStyles}
+                  initialCenter={{ lat: 47.444, lng: -122.176}}
+                /> */}
               </div> 
+                </div>
               }/>
             }
 
-            {/* <Route exact path={routes.ALERTS} render={() =>
-             <></>
+            <Route exact path={routes.ALERTS} render={() =>
              <Map closureList={closureList} lat={lat} lng={lng}/>
-               }/> */}
-            {/* <Route exact path={routes.HOME} render={() =>
+               }/>
+            <Route exact path={routes.HOME} render={() =>
               <img src="home-yosemite.png" />
-               }/> */}
+               }/>
             {/* <Route exact path={routes.TRACK} render={() =>
              <></>
              }/> */}

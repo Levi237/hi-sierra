@@ -1,12 +1,13 @@
 export const ROOT = '/';
 export const HOME = '/home';
-
+export const ABOUT = '/about';
 export const REGISTER = '/register';
 export const LOGIN = '/login';
 export const USERS = '/users/:id';
 export const LOGOUT = '/';
 export const TRACK = '/my/tracker'
 export const ALERTS = '/alertlist';
-export const STAR = '/starmap';
-
-export const EDIT = `/:id/edit`;
+// export const STAR = '/starmap';
+export const PARKS = '/parks';
+// export const EDIT = `/${this.props.currentUser._id}/edit`;
+// export const EDIT = `/:id/edit`;

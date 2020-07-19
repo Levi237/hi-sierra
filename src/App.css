@@ -1,0 +1,18 @@
+.title > div > div:last-of-type {
+    transition: all .1s ease-in-out;
+    /* display: none; */
+    /* visibility: hidden; */
+  }
+  .title:hover > div > div:last-of-type {
+    text-decoration: none;
+    cursor: pointer;
+    background-color: rgb(0, 0, 0, .2);
+    border-radius: 5px;
+    padding: 5px;
+    margin: -5px;
+  }
+  .active > div > div:last-of-type {
+    transition-duration: 5s;
+    display: none;
+    /* width: 100%; */
+  }
